@@ -1,0 +1,34 @@
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+     <div class="container ">
+       <a class="navbar-brand mr-5" href="/">IBlog</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item ml-5">
+             <a class="nav-link  text-white" aria-current="page" href="/">HOME</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link text-white" aria-current="page" href="/admin">ADMIN</a>
+           </li>
+           <li class="nav-item dropdown">
+             <a class="nav-link dropdown-toggle text-white mr-5 " href="#" id="electronicsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               CATEGORY
+             </a>
+             <ul class="dropdown-menu" aria-labelledby="electronicsDropdown">
+               {% for cat in all_category %}
+               <li>
+                 <a class="dropdown-item text-info" href="{% url 'post_category' cat.url %}">{{cat.title}}</a>
+               </li>
+               {% endfor %}
+             </ul>
+           </li>
+               <form class="d-flex ml-5 pl-5" method="get" action="{% url 'search' %}">
+                 <input class="form-control me-2" name="query" type="text" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-warning" type="submit">S</button>
+             </form>
+         </ul>
+       </div>
+     </div>
+</nav>

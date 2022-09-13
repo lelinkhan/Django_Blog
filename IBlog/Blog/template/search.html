@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<div class="container my-5">
+    <h2 class="">Search Result...</h2>
+    <hr>
+    <br>
+    {% for p in posts %}
+    <div class="row">
+          <div class="col-sm-6 text-center align-self-center">
+           <img height="250" width="80%" src="{{p.image.url}}" alt="" class="img-fluid img-thumbnail">
+          </div>
+          <div class="col-sm-5 offset-sm-1">
+           <h2>{{p.title}}</h2>
+           <hr>
+           <p>
+               {{p.content | safe}}
+           </p>
+          </div>
+         </div>
+    {% empty %}
+        <h3 class="text-center text-warning">{{message}}</h3>
+     <br>
+    <hr>
+        {% endfor %}
+
+</div>
+{% endblock %}
